@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Commission Calculator</title>
+    <script>
+        function calculateEarnings() {
+            // Get input values
+            const salesAmount = parseFloat(document.getElementById("salesAmount").value) || 0;
+            const commissionRate = parseFloat(document.getElementById("commissionRate").value) || 0;
+            const salary = parseFloat(document.getElementById("salary").value) || 0;
+
+            // Commission calculation
+            const commissionEarned = (salesAmount * (commissionRate / 100)).toFixed(2);
+
+            // Total earnings (salary + commission)
+            const totalEarnings = (parseFloat(commissionEarned) + salary).toFixed(2);
+
+            // Display results
+            document.getElementById("commissionResult").textContent = `Commission Earned: $${commissionEarned}`;
+            document.getElementById("totalEarningsResult").textContent = `Total Earnings: $${totalEarnings}`;
+        }
+    </script>
+</head>
+<body style="text-align: center; color: white; background-color: #333333; font-family: Arial, Helvetica, sans-serif;">
+
+    <div><h1 style="font-size: 70px;">17th Street Real Estate</h1></div>
+    <h1>Sales Commission Calculator</h1>
+    <div>
+        <label for="salesAmount">Sales Amount ($):</label>
+        <input type="number" id="salesAmount" step="0.01" oninput="calculateEarnings()">
+    </div>
+    <div>
+        <label for="commissionRate">Commission Rate (%):</label>
+        <input type="number" id="commissionRate" step="0.1" oninput="calculateEarnings()">
+    </div>
+    <div>
+        <label for="salary">Base Salary ($):</label>
+        <input type="number" id="salary" step="0.01" oninput="calculateEarnings()">
+    </div>
+    
+    <h2>Results:</h2>
+    <p id="commissionResult">Commission Earned: $0.00</p>
+    <p id="totalEarningsResult">Total Earnings: $0.00</p>
+    
+</body>
+</html>
